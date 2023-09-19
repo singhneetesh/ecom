@@ -1,0 +1,53 @@
+
+
+.nav-ul li{
+display:inline-flex;
+padding: 10px;
+}
+
+.nav-ul li a{
+  color: #fff;
+  text-decoration: none;
+  padding: 5px;
+}
+
+.nav-ul{
+
+  background-color:skyblue;
+  margin: 0px;
+  padding: 5px;
+}
+
+
+.Footer{
+  position: absolute;
+
+  bottom: 0;
+  background-color: skyblue;
+  width: 100%;
+  text-align: center;
+  
+}
+
+.inputBox{   
+    padding: 7px;
+    display: block;
+    width: 405Px;
+    margin: 20px;
+    border: 1px solid skyblue;
+}
+.sigupForm{
+  margin-left: 30%;
+
+}
+
+.SignupButton{
+  width: 150px;
+  margin: 20px;
+  padding: 8px;
+  background-color: beige;
+  border: solid 1px;
+  cursor:pointer
+
+}
+
