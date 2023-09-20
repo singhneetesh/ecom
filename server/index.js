@@ -1,33 +1,18 @@
 const express = require('express');
-const cors= require('cors')
-const { default: mongoose } = require('mongoose');
+const Users= require('./DB/Users')
 const app = express()
-require('dotenv').config()
-
-const userRoutes = require('./routes/userRoute');
-
+const cors = require('cors')
+require('./DB/config');
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect(process.env.DB_URL,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}).then(()=>{
-    console.log("DB connection successfully!")
-}).catch((err)=>{
-    console.log(err)
+app.post('/register', async (req, resp)=>{
+   console.log(req.body)
+    let user = new Users(req.body);
+    let result = await user.save();
+    resp.send(result);
 })
 
-// Use user routes
-app.use('/api/users', userRoutes);
-
-
-app.get('/',(req,res)=>{
-   res.send('hello')
-})
-
-const port = process.env.PORT || 4000 
-
-app.listen(port, ()=>{
-    console.log(`server is running http://localhost:${port}`)
+app.listen(4000, () => {
+    console.log(`server is running http://localhost:4000`)
 })

@@ -29,10 +29,11 @@
 
 // export default SignUp;
 // src/components/RegisterForm.js
+// src/components/RegisterForm.js
+// src/components/RegistrationForm.js
+// src/components/RegisterForm.js
 import React, { useState } from 'react';
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom'
-
 
 function RegisterForm() {
   const [formData, setFormData] = useState({
@@ -40,7 +41,6 @@ function RegisterForm() {
     email: '',
     password: '',
   });
-const navigate= useNavigate()
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,10 +50,8 @@ const navigate= useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-navigate('/login')
-
     try {
-      await axios.post('api/users/register', formData);
+      await axios.post('/register', formData);
       alert('User registered successfully!');
     } catch (error) {
       console.error(error);
@@ -62,33 +60,31 @@ navigate('/login')
   };
 
   return (
-    <>
-<h1>Registration</h1>
-
-    <form onSubmit={handleSubmit}>
+    <form className= 'sigupForm' onSubmit={handleSubmit}>
+      <h1>Registration</h1>
       <input className='inputBox'
         type="text"
         name="name"
-       
+        value={formData.name}
         onChange={handleChange}
         placeholder="Name"
       />
       <input className='inputBox'
         type="email"
         name="email"
-        
+        value={formData.email}
         onChange={handleChange}
         placeholder="Email"
       />
       <input className='inputBox'
         type="password"
         name="password"
+        value={formData.password}
         onChange={handleChange}
         placeholder="Password"
       />
-      <button type="submit">Register</button>
+      <button className= 'SignupButton' type="submit">Register</button>
     </form>
-    </>
   );
 }
 
